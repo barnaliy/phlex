@@ -6,7 +6,7 @@ namespace form::experimental {
 
   // Accept and store config
   form_interface::form_interface(std::shared_ptr<phlex::testing::product_type_names> tm,
-                                 const phlex::config::parse_config& config) :
+                                 const form::experimental::config::parse_config& config) :
     m_pers(nullptr), m_type_map(tm), m_config()
   {
     // Convert phlex config to form config
@@ -45,7 +45,7 @@ namespace form::experimental {
     if (batch.empty())
       return;
 
-    // Look up creator from config based on product name. 
+    // Look up creator from config based on product name.
     auto it = m_product_to_config.find(batch[0].label);
     if (it == m_product_to_config.end()) {
       throw std::runtime_error("No configuration found for product: " + batch[0].label);

@@ -3,9 +3,9 @@
 #ifndef __FORM_H__
 #define __FORM_H__
 
+#include "mock_phlex/phlex_toy_config.hpp"
+#include "mock_phlex/phlex_toy_core.hpp"
 #include "parse_config.hpp"
-#include "mockphlex/phlex_toy_core.hpp"
-#include "mockphlex/phlex_toy_config.hpp"
 #include "persistence/ipersistence.hpp"
 
 #include <memory>
@@ -15,7 +15,7 @@ namespace form::experimental {
   class form_interface {
   public:
     form_interface(std::shared_ptr<phlex::testing::product_type_names> tm,
-                   const phlex::config::parse_config& config);
+                   const form::experimental::config::parse_config& config);
     ~form_interface() = default;
 
     void write(const std::string& creator, const phlex::testing::product_base& pb);
