@@ -1,21 +1,18 @@
-#ifndef __FORM_PARSE_CONFIG_H__
-#define __FORM_PARSE_CONFIG_H__
+#ifndef __PARSE_CONFIG_H__
+#define __PARSE_CONFIG_H__
 
-#include "technology.hpp"  // Use shared Technology constants
+#include "form/technology.hpp"  // Use shared Technology constants
 
 #include <memory>
-#include <optional>
 #include <string>
 #include <vector>
 
-namespace form::experimental::config {
+namespace phlex::config {
 
   struct PersistenceItem {
     std::string product_name; // e.g. "trackStart", "trackNumberHits"
     std::string file_name;    // e.g. "toy.root", "output.hdf5"
     int technology;           // Technology::ROOT_TTREE, Technology::ROOT_RNTUPLE, Technology::HDF5
-
-    PersistenceItem() = default;
 
     PersistenceItem(const std::string& product, const std::string& file, int tech) :
       product_name(product), file_name(file), technology(tech)
@@ -32,7 +29,7 @@ namespace form::experimental::config {
     void addItem(const std::string& product_name, const std::string& file_name, int technology);
 
     // Find configuration for a product+creator combination
-    std::optional<PersistenceItem> findItem(const std::string& product_name) const;
+    const PersistenceItem* findItem(const std::string& product_name) const;
 
     // Get all items (for debugging/validation)
     const std::vector<PersistenceItem>& getItems() const { return m_items; }
@@ -41,6 +38,6 @@ namespace form::experimental::config {
     std::vector<PersistenceItem> m_items;
   };
 
-} // namespace form::config
+} // namespace phlex::config
 
 #endif

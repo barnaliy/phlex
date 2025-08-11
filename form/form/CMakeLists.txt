@@ -6,7 +6,6 @@
 # Component(s) in the package:
 add_library(form
 	form.cpp
-	phlex_toy_core.cpp
-	phlex_toy_config.cpp
 )
 target_link_libraries(form persistence)
+target_link_libraries(form mockphlex)
