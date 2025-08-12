@@ -3,7 +3,7 @@
 # External dependencies:
 #find_package( PHLEX )
 
-if(USE_ROOT_STORAGE)
+if(FORM_USE_ROOT_STORAGE)
   add_subdirectory(data_products)
 endif()
 
